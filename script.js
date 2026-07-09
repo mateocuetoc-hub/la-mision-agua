@@ -1,0 +1,58 @@
+// La Misión - configuración rápida
+// Cuando tengas el número real, escríbelo aquí sin +, espacios ni guiones.
+// Ejemplo Chile: "56912345678"
+const WHATSAPP_NUMBER = "";
+
+const WHATSAPP_MESSAGE = `Hola, quiero hacer un pedido de agua purificada La Misión.
+
+Cantidad de recargas:
+Cantidad de bidones completos:
+Dirección:
+Forma de pago:`;
+
+const navToggle = document.querySelector(".nav-toggle");
+const navLinks = document.querySelector(".nav-links");
+
+if (navToggle && navLinks) {
+  navToggle.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("is-open");
+    navToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  navLinks.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("is-open");
+      navToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
+document.querySelectorAll("[data-whatsapp]").forEach((button) => {
+  button.addEventListener("click", (event) => {
+    if (!WHATSAPP_NUMBER) {
+      event.preventDefault();
+      alert("Falta agregar el número de WhatsApp en script.js");
+      return;
+    }
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+    button.setAttribute("href", url);
+  });
+});
+
+const copyButton = document.querySelector("[data-copy-address]");
+if (copyButton) {
+  copyButton.addEventListener("click", async () => {
+    const address = "Villa Las Acacias, Pasaje Los Acacios 126, San Felipe";
+
+    try {
+      await navigator.clipboard.writeText(address);
+      copyButton.textContent = "Dirección copiada";
+      setTimeout(() => {
+        copyButton.textContent = "Copiar dirección";
+      }, 1800);
+    } catch (error) {
+      alert(address);
+    }
+  });
+}

@@ -1,0 +1,14 @@
+# Sistema
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Temporales
+*.log
+*.tmp
+
+# Dependencias futuras
+node_modules/
+.env
