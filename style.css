@@ -711,6 +711,88 @@ p {
   }
 }
 
+/* ===== MEJORA SECCIÓN INSTALACIONES ===== */
+
+.trust .split {
+  align-items: center;
+  gap: 42px;
+}
+
+.trust-images {
+  display: grid;
+  grid-template-columns: 1.25fr 0.95fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.trust-images figure {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: 0 20px 48px rgba(5, 31, 55, 0.14);
+}
+
+.trust-images img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  filter: contrast(1.05) saturate(1.08) brightness(1.02);
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.trust-images figure:hover img {
+  transform: scale(1.04);
+  filter: contrast(1.07) saturate(1.12) brightness(1.04);
+}
+
+.trust-images__main {
+  min-height: 380px;
+}
+
+.trust-images__side {
+  min-height: 380px;
+}
+
+.trust h2 {
+  max-width: 560px;
+  line-height: 1.02;
+}
+
+.trust p {
+  max-width: 560px;
+}
+
+.trust .note {
+  margin-top: 24px;
+  padding: 20px 22px;
+  border-left: 4px solid #1da7ee;
+  border-radius: 18px;
+  background: #eaf6ff;
+  color: #123d63;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .trust-images {
+    grid-template-columns: 1fr;
+  }
+
+  .trust-images__main,
+  .trust-images__side {
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 560px) {
+  .trust-images__main,
+  .trust-images__side {
+    min-height: 220px;
+  }
+}
+
 /* ===== MEJORA PRO: CÓMO PEDIR ===== */
 
 .order-steps {
