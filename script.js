@@ -62,54 +62,92 @@ revealElements.forEach((element, index) => {
   element.classList.add(delayClass);
 });
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.16,
-    rootMargin: "0px 0px -60px 0px",
-  }
-);
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.16,
+      rootMargin: "0px 0px -60px 0px",
+    }
+  );
 
-revealElements.forEach((element) => {
-  revealObserver.observe(element);
-});
+  revealElements.forEach((element) => {
+    revealObserver.observe(element);
+  });
+} else {
+  revealElements.forEach((element) => {
+    element.classList.add("is-visible");
+  });
+}
 
 // ===== MENÚ HAMBURGUESA =====
 
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector("#navLinks");
+const mobileNavigation = window.matchMedia("(max-width: 860px)");
 
 if (navToggle && navLinks) {
-  navToggle.addEventListener("click", () => {
-    const isOpen = navLinks.classList.toggle("is-open");
+  const siteHeader = navToggle.closest(".site-header");
+  const isMenuOpen = () => navLinks.classList.contains("is-open");
 
+  const setMenuState = (isOpen) => {
+    navLinks.classList.toggle("is-open", isOpen);
     navToggle.classList.toggle("is-open", isOpen);
+    siteHeader?.classList.toggle("menu-is-open", isOpen);
     navToggle.setAttribute("aria-expanded", String(isOpen));
     navToggle.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
+  };
+
+  const closeMenu = (restoreFocus = false) => {
+    if (!isMenuOpen()) return;
+
+    setMenuState(false);
+
+    if (restoreFocus) {
+      navToggle.focus();
+    }
+  };
+
+  navToggle.addEventListener("click", () => {
+    setMenuState(!isMenuOpen());
   });
 
   navLinks.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
-      navLinks.classList.remove("is-open");
-      navToggle.classList.remove("is-open");
-      navToggle.setAttribute("aria-expanded", "false");
-      navToggle.setAttribute("aria-label", "Abrir menú");
+      closeMenu();
     });
   });
 
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      navLinks.classList.remove("is-open");
-      navToggle.classList.remove("is-open");
-      navToggle.setAttribute("aria-expanded", "false");
-      navToggle.setAttribute("aria-label", "Abrir menú");
-    }
+  document.addEventListener("click", (event) => {
+    if (!isMenuOpen()) return;
+    if (navToggle.contains(event.target) || navLinks.contains(event.target)) return;
+
+    closeMenu(navLinks.contains(document.activeElement));
   });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || !isMenuOpen()) return;
+
+    event.preventDefault();
+    closeMenu(true);
+  });
+
+  const handleNavigationBreakpointChange = () => {
+    setMenuState(false);
+  };
+
+  if (typeof mobileNavigation.addEventListener === "function") {
+    mobileNavigation.addEventListener("change", handleNavigationBreakpointChange);
+  } else {
+    mobileNavigation.addListener(handleNavigationBreakpointChange);
+  }
+
+  setMenuState(false);
 }
