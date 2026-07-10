@@ -56,3 +56,44 @@ if (copyButton) {
     }
   });
 }
+
+// ===== ANIMACIONES SUAVES AL HACER SCROLL =====
+
+const revealElements = document.querySelectorAll(`
+  .section-heading,
+  .price-card,
+  .step-card,
+  .delivery-card,
+  .gallery-featured,
+  .gallery-cards figure,
+  .location-info-card,
+  .map-preview,
+  .contact-main,
+  .contact-summary
+`);
+
+revealElements.forEach((element, index) => {
+  element.classList.add("reveal");
+
+  const delayClass = `reveal-delay-${(index % 4) + 1}`;
+  element.classList.add(delayClass);
+});
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.16,
+    rootMargin: "0px 0px -60px 0px",
+  }
+);
+
+revealElements.forEach((element) => {
+  revealObserver.observe(element);
+});

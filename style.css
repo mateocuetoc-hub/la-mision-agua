@@ -1557,3 +1557,130 @@ p {
     width: 100%;
   }
 }
+
+/* ===== ANIMACIONES SUAVES ===== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 {
+  transition-delay: 0.08s;
+}
+
+.reveal-delay-2 {
+  transition-delay: 0.16s;
+}
+
+.reveal-delay-3 {
+  transition-delay: 0.24s;
+}
+
+.reveal-delay-4 {
+  transition-delay: 0.32s;
+}
+
+/* Animación suave para botones */
+.btn,
+.nav-cta,
+.whatsapp-float {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.btn:hover,
+.nav-cta:hover {
+  transform: translateY(-3px);
+}
+
+/* Animación suave para tarjetas */
+.price-card,
+.step-card,
+.gallery-showcase figure,
+.location-info-card,
+.contact-summary,
+.info-list div,
+.summary-item {
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
+}
+
+.price-card:hover,
+.location-info-card:hover,
+.contact-summary:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 65px rgba(5, 31, 55, 0.16);
+}
+
+/* Hero entra suave al cargar */
+.hero .eyebrow,
+.hero h1,
+.hero__text,
+.hero__actions,
+.hero__stats {
+  animation: heroFadeUp 0.8s ease both;
+}
+
+.hero h1 {
+  animation-delay: 0.1s;
+}
+
+.hero__text {
+  animation-delay: 0.2s;
+}
+
+.hero__actions {
+  animation-delay: 0.3s;
+}
+
+.hero__stats {
+  animation-delay: 0.4s;
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respeta usuarios que prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .hero .eyebrow,
+  .hero h1,
+  .hero__text,
+  .hero__actions,
+  .hero__stats,
+  .btn,
+  .nav-cta,
+  .whatsapp-float,
+  .price-card,
+  .step-card,
+  .gallery-showcase figure,
+  .location-info-card,
+  .contact-summary {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
