@@ -1,7 +1,7 @@
 // La Misión - configuración rápida
 // Cuando tengas el número real, escríbelo aquí sin +, espacios ni guiones.
 // Ejemplo Chile: "56912345678"
-const WHATSAPP_NUMBER = "";
+const WHATSAPP_NUMBER = "56988096349";
 
 const WHATSAPP_MESSAGE = `Hola, quiero hacer un pedido de agua purificada La Misión.
 

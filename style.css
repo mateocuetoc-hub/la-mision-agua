@@ -1552,3 +1552,20 @@ p {
     background: linear-gradient(135deg, #1bb0ff, #0369a1);
   }
 }
+
+/* ===== WHATSAPP CONFIRMADO ===== */
+
+.contact-phone {
+  margin-top: 18px;
+  padding: 14px 18px;
+  width: fit-content;
+  border-radius: 18px;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  font-weight: 800;
+}
+
+.contact-phone strong {
+  color: #7dd6ff;
+}

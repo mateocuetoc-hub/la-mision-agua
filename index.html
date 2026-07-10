@@ -24,14 +24,19 @@
         <span></span>
       </button>
 
-      <div class="nav-links" id="navLinks">
-        <a href="#precios">Precios</a>
-        <a href="#como-pedir">Cómo pedir</a>
-        <a href="#reparto">Reparto</a>
-        <a href="#galeria">Galería</a>
-        <a href="#ubicacion">Ubicación</a>
-        <a href="#contacto" class="nav-cta">Pedir ahora</a>
-      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#precios">Precios</a></li>
+        <li><a href="#como-pedir">Cómo pedir</a></li>
+        <li><a href="#reparto">Reparto</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#ubicacion">Ubicación</a></li>
+        <li class="nav-mobile-favoritos-item">
+          <button class="nav-favoritos-mobile" id="nav-favoritos-mobile" type="button">
+            ♡ Favoritos
+          </button>
+        </li>
+        <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+      </ul>
     </nav>
   </header>
 
@@ -293,10 +298,14 @@
             Atendemos hogares, negocios y oficinas en San Felipe y alrededores.
           </p>
 
+          <p class="address">
+            Villa Las Acacias, Pasaje Los Acacios 126, San Felipe.
+          </p>
+
           <div class="location-details" aria-label="Datos de ubicación y atención">
             <article>
               <span>Dirección</span>
-              <strong>Villa Las Acacias, Pasaje Los Acacios 126</strong>
+              <strong>Villa Las Acacias, Pasaje Los Acacios 126, San Felipe</strong>
             </article>
             <article>
               <span>Horario</span>
@@ -312,7 +321,7 @@
         <div class="location-panel">
           <img src="assets/img/sucursal-exterior.jpg" alt="Exterior de la sucursal La Misión en San Felipe" />
           <div class="location-actions">
-            <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Villa%20Las%20Acacias%20Pasaje%20Los%20Acacios%20126%20San%20Felipe%20Chile" target="_blank" rel="noopener">Abrir en Maps</a>
+            <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Villa%20Las%20Acacias%20Los%20Acacios%20126%20San%20Felipe%20Valparaiso%20Chile" target="_blank" rel="noopener">Abrir en Maps</a>
             <button class="btn btn-secondary" data-copy-address>Copiar dirección</button>
           </div>
         </div>
@@ -328,6 +337,9 @@
           <p>
             Cuéntanos cuántas recargas o bidones completos necesitas y coordinamos
             dirección, horario y forma de pago.
+          </p>
+          <p class="contact-phone">
+            WhatsApp: <strong>+56 9 8809 6349</strong>
           </p>
           <a href="#" class="btn btn-primary btn-large contact-cta" data-whatsapp>Pedir por WhatsApp</a>
         </div>
@@ -367,6 +379,7 @@
       </div>
       <div>
         <p>Villa Las Acacias, Pasaje Los Acacios 126</p>
+        <small>San Felipe, Valparaíso</small>
         <p>Horario: 8:00 AM a 9:00 PM</p>
       </div>
     </div>
