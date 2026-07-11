@@ -26,7 +26,7 @@ document.querySelectorAll("[data-whatsapp]").forEach((button) => {
 const copyButton = document.querySelector("[data-copy-address]");
 if (copyButton) {
   copyButton.addEventListener("click", async () => {
-    const address = "Villa Las Acacias, Pasaje Los Acacios 126, San Felipe";
+    const address = "Los Acacios 130, Villa Las Acacias, San Felipe";
 
     try {
       await navigator.clipboard.writeText(address);
