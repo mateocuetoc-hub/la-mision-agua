@@ -1212,11 +1212,13 @@ p {
   gap: 14px;
 }
 
-.location-panel img {
+.location-map {
+  display: block;
+  width: 100%;
   min-height: 280px;
   height: 100%;
+  border: 0;
   border-radius: 24px;
-  object-fit: cover;
   box-shadow: 0 18px 42px rgba(5, 31, 55, 0.13);
 }
 
@@ -1353,7 +1355,7 @@ p {
     grid-template-columns: 1fr;
   }
 
-  .location-panel img {
+  .location-map {
     height: 340px;
   }
 
@@ -1374,7 +1376,7 @@ p {
     grid-template-columns: 1fr;
   }
 
-  .location-panel img {
+  .location-map {
     height: 280px;
   }
 
