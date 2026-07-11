@@ -571,14 +571,26 @@ p {
   }
 
   .hero {
-    padding-top: 100px;
+    min-height: auto;
+    padding: 104px 0 74px;
+    background-position: 58% center;
   }
 
   .hero h1 {
+    max-width: 360px;
+    margin-bottom: 18px;
+    font-size: clamp(2.25rem, 11vw, 3rem);
+    line-height: 1.02;
     letter-spacing: -1.3px;
   }
 
-  .hero__stats,
+  .hero__text {
+    max-width: 350px;
+    margin-bottom: 24px;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
   .price-grid,
   .photo-stack,
   .double-image {
@@ -586,7 +598,26 @@ p {
   }
 
   .hero__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
     margin-top: 28px;
+  }
+
+  .hero__stats article {
+    padding: 14px 12px;
+    border-radius: 16px;
+  }
+
+  .hero__stats article:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .hero__stats strong {
+    font-size: 1.18rem;
+  }
+
+  .hero__stats span {
+    font-size: 0.78rem;
   }
 
   .section {
